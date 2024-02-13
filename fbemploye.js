@@ -155,6 +155,7 @@ let addemployeesection = document.getElementById('employee-section')
 function allData(name, email, designation, mobile){
    
   
+  
 
   let child = document.createElement('div')
     firebase.storage().ref('user/'+email+'/profile.jpg').getDownloadURL().then(imgurl=>{
@@ -172,28 +173,26 @@ function allData(name, email, designation, mobile){
         <button class="view-profile">View Profile</button>
         `
        
+        const win = document.getElementById('tr-display')
+        const btns = document.getElementsByClassName('view-profile');
+        const profile = document.getElementById('slide-up-center');
+
+        const buttonList = Array.prototype.filter.call(
+        btns,
+        (testElement) => testElement.nodeName === "BUTTON",
+        );
+        console.log(buttonList);
+        buttonList.forEach(element => {
+        element.addEventListener('click', () => {
+        profile.classList.toggle('show');
+        console.log('click');
+        win.classList.toggle('show-display')
+        // profile.style.visibility="visible";
+        })
+        });
     })
   
 
-
-              
-// const win = document.getElementById('tr-display')
-// const btns = document.getElementsByClassName('view-profile');
-// const profile = document.getElementById('slide-up-center');
-
-// const buttonList = Array.prototype.filter.call(
-//   btns,
-//   (testElement) => testElement.nodeName === "BUTTON",
-// );
-// console.log(buttonList);
-// buttonList.forEach(element => {
-//   element.addEventListener('click', () => {
-//     profile.classList.toggle('show');
-//     console.log('click');
-//     win.classList.toggle('show-display')
-//     // profile.style.visibility="visible";
-//   })
-// });
   addemployeesection.prepend(child)
   // let st=firebase.getStorage()
 
