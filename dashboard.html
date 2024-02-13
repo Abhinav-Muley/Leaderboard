@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <script src="index.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js" defer></script>
+    
+    <title>Xscientist Dashboard</title>
+  </head>
+
+  <body>
+    <header>
+      <nav class="nav">
+        <div class="right-header">
+
+        
+        <ul>
+          <li id="menu">
+            <button id="menu-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            </button>
+          </li>
+          <li><a id="home" href="https:/www.google.com">Home</a></li>
+          
+        </ul>
+
+
+        <div class="right-icon">
+        <ul>
+          <li>
+            <div id="noti-icon">
+              <div>
+                <span class="dot">
+    
+                </span>
+                
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                </svg>
+              </div>
+              
+            </div>
+          </li>
+          <li>
+            <div id="pr-icon">
+              <img id="user-icon" src="" alt="">
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+      </nav>
+
+      <!-- profile pop up  -->
+      <div id="pr-popup">
+        <ul>
+          <div class="popup-content">
+          <li>
+            <div class="popup-row">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+                
+              </div>
+              <div>
+                <p>Profile</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="popup-row">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                
+              </div>
+              <div>
+                <p>Setting</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="popup-row">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                
+              </div>
+              <div>
+                <p>Log Out</p>
+              </div>
+            </div>
+          </li>
+        </div>
+        </ul>
+      </div>
+
+      <!-- notification pop up -->
+      <div id="noti-popup">
+        <ul>
+          <div class="popup-content">
+          <li>
+            <div class="popup-row">
+              <div class="notification">
+                <div class="noti-pr">
+                  <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
+                </div>
+                <div>
+                  <h4>Ruben Caldwell
+
+                  </h4>
+                  <p>message description</p>
+                </div>
+              </div>
+              
+            </div>
+          </li>
+          <li>
+            <div class="popup-row">
+              <div class="notification">
+                <div class="noti-pr">
+                  <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="">
+                </div>
+                <div>
+                  <h4>Abhinav Muley</h4>
+                  <p>message description</p>
+                </div>
+              </div>
+              
+            </div>
+          </li>
+          <li>
+            <div class="popup-row">
+              <div class="notification">
+                <div class="noti-pr">
+                  <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="">
+                </div>
+                <div>
+                  <h4>Siddhant Bilange</h4>
+                  <p>message description</p>
+                </div>
+              </div>
+              
+            </div>
+          </li>
+        </div>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <div id="dashboard">
+        <div class="dash-contianer">
+          <span class="focus"></span>
+          <div class="side-content">
+            <div>
+              <a href="dashboard.html">
+                <div class="display-flex">
+                  <div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-6 h-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p>Dashboard</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="side-content">
+            <div>
+              <a href="createProject.html">
+                <div class="display-flex">
+                  <div>
+                    <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z"
+                  />
+                </svg>
+                  </div>
+                  <div>
+                    <p>Create Project</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="side-content">
+            <div>
+              <a href="createTask.html">
+                <div class="display-flex">
+                  <div>
+                    <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z"
+                  />
+                </svg>
+                  </div>
+                  <div>
+                    <p>Create Task</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="side-content">
+            <div>
+              <a href="employee.html">
+                <div class="display-flex">
+                  <div>
+                    <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z"
+                  />
+                </svg>
+                  </div>
+                  <div>
+                    <p>Profile</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          
+
+
+          
+          
+          
+        </div>
+      </div>
+      <div class="main-container">
+        <h2 class="heading">Dashboard</h2>
+        
+        <div class="four-cards">
+          <div class="cards">
+            <div class="inner-card">
+              <div class="cards-icon1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM15.75 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM2.25 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM6.31 15.117A6.745 6.745 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498.75.75 0 0 1-.372.568A12.696 12.696 0 0 1 12 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 0 1-.372-.568 6.787 6.787 0 0 1 1.019-4.38Z"
+                    clip-rule="evenodd"
+                  />
+                  <path
+                    d="M5.082 14.254a8.287 8.287 0 0 0-1.308 5.135 9.687 9.687 0 0 1-1.764-.44l-.115-.04a.563.563 0 0 1-.373-.487l-.01-.121a3.75 3.75 0 0 1 3.57-4.047ZM20.226 19.389a8.287 8.287 0 0 0-1.308-5.135 3.75 3.75 0 0 1 3.57 4.047l-.01.121a.563.563 0 0 1-.373.486l-.115.04c-.567.2-1.156.349-1.764.441Z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3>Total Projects</h3>
+                <p>6389</p>
+              </div>
+            </div>
+          </div>
+          <div class="cards">
+            <div class="inner-card">
+              <div class="cards-icon2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    d="M4.5 3.75a3 3 0 0 0-3 3v.75h21v-.75a3 3 0 0 0-3-3h-15Z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M22.5 9.75h-21v7.5a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-7.5Zm-18 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3>Working On</h3>
+                <p style="text-wrap: nowrap">60.89</p>
+              </div>
+            </div>
+          </div>
+          <div class="cards">
+            <div class="inner-card">
+              <div class="cards-icon3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3>Pending</h3>
+                <p>376</p>
+              </div>
+            </div>
+          </div>
+          <div class="cards">
+            <div class="inner-card">
+              <div class="cards-icon3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3>Total Tasks</h3>
+                <p>376</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="task">
+        <div class="bg">
+          <div class="task-list">
+            <div class="display-flex center">
+              <h3 class="padd">Task List</h3>
+            </div>
+            <div id="task-btn">
+              <button>
+                <div class="display-flex">
+                  <div class="add">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-6 h-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="new-task">
+                    <p>New Task</p>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+          
+         <div class="scroll">
+
+         
+          <table class="display" >
+            <thead>
+              <tr class="frst" >
+                <th>Task</th>
+                <th>Start Date</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+
+            <tbody id="tbody">
+              
+              <tr>
+                <td class="user-info">
+                  <div class="user-img">
+                    <img
+                      src="https://randomuser.me/api/portraits/women/79.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <b> Hans Burger </b>
+                    <small class="block">10x Developer</small>
+                  </div>
+                </td>
+                <td>10/01/2024</td>
+                <td>11/01/2024</td>
+                <td>Pending</td>
+                <td>High</td>
+                <td>
+                  <div class="flex gap-5 td-end">
+                    <button class="edit">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                        />
+                      </svg>
+                    </button>
+                    <button class="red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="user-info">
+                  <div class="user-img">
+                    <img
+                      src="https://randomuser.me/api/portraits/men/62.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <b> Hans Burger </b>
+                    <small class="block">10x Developer</small>
+                  </div>
+                </td>
+                <td>1/11/2023</td>
+                <td>01/01/2024</td>
+                <td>Completed</td>
+                <td>Low</td>
+                <td>
+                  <div class="flex gap-5 td-end">
+                    <button class="edit">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                        />
+                      </svg>
+                    </button>
+                    <button class="red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="user-info">
+                  <div class="user-img">
+                    <img
+                      src="https://randomuser.me/api/portraits/women/36.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <b> Hans Burger </b>
+                    <small class="block">10x Developer</small>
+                  </div>
+                </td>
+                <td>4/8/2023</td>
+                <td>15/9/2023</td>
+                <td>Completed</td>
+                <td>High</td>
+                <td>
+                  <div class="flex gap-5 td-end">
+                    <button class="edit">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                        />
+                      </svg>
+                    </button>
+                    <button class="red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="user-info">
+                  <div class="user-img">
+                    <img
+                      src="https://randomuser.me/api/portraits/women/36.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <b> Hans Burger </b>
+                    <small class="block">10x Developer</small>
+                  </div>
+                </td>
+                <td>4/8/2023</td>
+                <td>15/9/2023</td>
+                <td>Completed</td>
+                <td>High</td>
+                <td>
+                  <div class="flex gap-5 td-end">
+                    <button class="edit">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                        />
+                      </svg>
+                    </button>
+                    <button class="red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+           
+              <tr>
+                <td class="user-info">
+                  <div class="user-img">
+                    <img
+                      src="https://randomuser.me/api/portraits/women/36.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <b> Hans Burger </b>
+                    <small class="block">10x Developer</small>
+                  </div>
+                </td>
+                <td>4/8/2023</td>
+                <td>15/9/2023</td>
+                <td>Completed</td>
+                <td>High</td>
+                <td>
+                  <div class="flex gap-5 td-end">
+                    <button class="edit">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                        />
+                      </svg>
+                    </button>
+                    <button class="red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="user-info">
+                  <div class="user-img">
+                    <img
+                      src="https://randomuser.me/api/portraits/women/36.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <b> Hans Burger </b>
+                    <small class="block">10x Developer</small>
+                  </div>
+                </td>
+                <td>4/8/2023</td>
+                <td>15/9/2023</td>
+                <td>Completed</td>
+                <td>High</td>
+                <td>
+                  <div class="flex gap-5 td-end">
+                    <button class="edit">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                        />
+                      </svg>
+                    </button>
+                    <button class="red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+      <div id="edit-row">
+        <div class="ti">
+          <div class="titlee">
+
+            <span >
+              <img id="pc" src="" alt="">
+            </span>
+            <div class="clm">
+              <h3 >
+                sdf
+              </h3>
+              <p>Edit mode</p>
+            </div>
+          </div>
+          <div >
+            <svg id="cls" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+            
+          </div>
+          
+
+        </div>
+        
+        <div class="editrow">
+
+          <p class="editrow">
+            <label for="due-datep">Due Date</label>
+            <input type="date" name="due_date" id="dd">
+          </p>
+          <p class="editrow">
+            <label for="statusp">Status</label>
+            <select name="status" id="statusp">
+              <option value="pending">Pending</option>
+              <option value="On Hold">On Hold</option>
+              <option value="Completed">Complete</option>
+            </select>
+          </p>
+          <p class="editrow">
+            <label for="priorityp">Priority</label>
+            <input type="number" name="priority" id="priorityp">
+          </p>
+        </div>
+        <div class="savebtn">
+          <button id="save">Save</button>
+        </div>
+      </div>
+      <!-- create task popup start -->
+      
+
+      <div id="sec-container">
+        <div class="display-flex">
+          <div>
+
+            <h2 class="headin">Create Task</h2>
+          </div>
+          <div id="close">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+            
+          </div>
+        </div>
+        <div >
+          <!-- <h3 class="element" >Elements</h3> -->
+          <!-- <h3 class="heading">Create Project</h3> -->
+              <div class="new-task">
+              
+              
+              <form class="task-form" action="" id="createTaskForm">
+                  
+                      <!-- <p class="task-entity1">
+                          
+                          <label for="project-name">Task Name </label>
+                          <input type="text" name="project-name" id="project-name" placeholder="Enter task name" >
+                      </p> -->
+                      
+                      <p class="task-entity1">
+                          <label for="project-description">Task description</label>
+                          <textarea name="project-description" id="project-description" cols="50" rows="5" placeholder="Task description"></textarea>
+                      </p>
+                      <div class="display-flex">
+  
+                          <p class="task-entity2">
+                              <label style="display: inline;" for="lead">Caller</label>
+                              <select style="display: inline;" name="lead" id="lead" required >
+                                  <option value="Yogesh Sir">Yogesh sir</option>
+                                  <option value="Krishna Sir">Krishna sir</option>
+                              </select>
+                          </p>
+                          <p class="task-entity2">
+                              <label for="start_date">Start Date</label>
+                              <input type="date" name="start_date" id="start_date">
+                      </p>
+                      <!-- <p class="task-entity2">
+                          <label for="tech_stack">Tech Stack</label>
+                              <select  name="tech_stack" id="tech_stack" multiple="true" required>
+                                  <option value="1">Frontend</option>
+                                  <option value="2">Backend</option>
+                                  <option value="3">Machine Learning</option>
+                                  <option value="2">DBMS</option>
+                              </select>
+                          </p> -->
+                          <p class="task-entity2" >
+                            <label for="priority">Priority</label>
+                                <input type="number" name="priority" id="priority" min="1">
+                            </p>
+                      </div>
+                      <div class="display-flex" >
+  
+                          <p class="task-entity2" >
+                              <label for="employee">Employee</label>
+                              
+                                  <select name="employee[]" id="employee" >
+                                      <option value="Yogesh Sir">Yogesh Sir</option>
+                                      <option value="Krishna Sir">Krishna sir</option>
+                                      <option value="Tushar sir">Tushar sir</option>
+                                  </select>
+                              </p>
+                              <p class="task-entity2">
+                                <label for="due_date">Due Date</label>
+                                <input type="date" name="due_date" id="due_date">
+                        </p>
+                              <p class="task-entity2" >
+                                  <label for="project">Project</label>
+                                      <select name="project" id="project" required>
+                                          <option value="Task Management">Task Management</option>
+                                          <option value="Resumefy">Resumefy</option>
+                                          <option value="Aartify">Aartify</option>
+                                          
+                                      </select>
+                                  </p>
+                              </div>
+                              <div class="submit-btn">
+                                  <input type="button" value="Create Task" id="submit">
+                              </div>
+                             
+                          </form>
+                         
+                  </div>
+          </div>
+          
+      </div>
+      <div id="bg-popup">
+
+      </div>
+      <div id="editbg">
+          
+      </div>
+      <!-- create task popup end  -->
+    </main>
+
+    <!-- <script
+      src="https://kit.fontawesome.com/039c4ca016.js"
+      crossorigin="anonymous"
+    ></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js"></script> -->
+    <script src="FBCreattsk.js" type="module"></script>
+  </body>
+</html>
+
+
