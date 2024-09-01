@@ -6,13 +6,13 @@ import { getStorage, ref,getDownloadURL } from "https://www.gstatic.com/firebase
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
-    apiKey: "AIzaSyD9tq9rBWQcl8djhTX1vaCnw3UKAKLN2ZM",
-    authDomain: "leaderboard-c4797.firebaseapp.com",
-    databaseURL: "https://leaderboard-c4797-default-rtdb.firebaseio.com",
-    projectId: "leaderboard-c4797",
-    storageBucket: "leaderboard-c4797.appspot.com",
-    messagingSenderId: "207200592356",
-    appId: "1:207200592356:web:4ac617c8267ff77edca7f1"
+    apikey: "FROM_YOUR_FIREBASE_CONFIG",
+    authDomain: "FROM_YOUR_FIREBASE_CONFIG",
+    databaseURL: "FROM_YOUR_FIREBASE_CONFIG",
+    projectId: "FROM_YOUR_FIREBASE_CONFIG",
+    storageBucket: "FROM_YOUR_FIREBASE_CONFIG",
+    messagingSenderId: "FROM_YOUR_FIREBASE_CONFIG",
+    appId: "FROM_YOUR_FIREBASE_CONFIG"
   };
 
   // Initialize Firebase
